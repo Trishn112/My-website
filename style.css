@@ -559,3 +559,17 @@ section {
     background: linear-gradient(135deg, #e1306c, #fd1d1d, #f77737);
 }
 .social-card.email { background: #22c55e; }
+#typing-text {
+    color: #38bdf8; 
+    font-weight: 600;
+    margin-left: 8px;
+    border-right: 3px solid #38bdf8;
+    padding-right: 5px;
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+    0% { border-color: transparent; }
+    50% { border-color: #38bdf8; }
+    100% { border-color: transparent; }
+}
