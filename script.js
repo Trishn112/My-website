@@ -1,3 +1,4 @@
+// JS CODE
 document.addEventListener("DOMContentLoaded", () => {
 
     /* ================= MODAL ================= */
@@ -133,3 +134,81 @@ function animateParticles() {
 
 particles = Array.from({ length: particleCount }, () => new Particle());
 animateParticles();
+
+// Paragraph typing animation
+const paraText = `I am Trishn Shukla, a motivated and detail-oriented student with a strong foundation in programming and problem-solving, and a growing interest in Artificial Intelligence and Machine Learning.`;
+
+const paraElement = document.getElementById("typing-para");
+
+let paraIndex = 0;
+
+function typeParagraph() {
+    if (paraIndex < paraText.length) {
+        paraElement.innerHTML += paraText.charAt(paraIndex);
+        paraIndex++;
+        setTimeout(typeParagraph, 25); // speed (lower = faster)
+    }
+}
+
+// Start animation when page loads
+window.addEventListener("load", typeParagraph);
+
+// for para2
+const paratext2 = `Skilled in Python, data handling using NumPy and Pandas, and basic computer vision
+                        concepts. I am eager to apply my technical knowledge to real-world projects,
+                        continuously learn new technologies, and contribute effectively in a professional
+                        environment.`;
+const paraElement2 = document.getElementById("typing-para2");
+
+let paraIndex2 = 0;
+
+function typeParagraph2() {
+    if (paraIndex2 < paratext2.length) {
+        paraElement2.innerHTML += paratext2.charAt(paraIndex2);
+        paraIndex2++;
+        setTimeout(typeParagraph2, 25); // speed (lower = faster)
+    }
+}
+
+// Start animation when page loads
+window.addEventListener("load", typeParagraph2);
+
+
+const contactForm = document.getElementById("contactForm");
+
+contactForm.addEventListener("submit", function (e) {
+    e.preventDefault(); // stop page reload
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    if (!name || !email || !phone || !message) {
+        alert("Please fill all fields");
+        return;
+    }
+
+    //  EMAIL
+    emailjs.send("service_40hrlz7", "template_vvvwl9f", {
+        name,
+        email,
+        phone,
+        message
+    }).then(() => {
+        console.log("Email sent ");
+    }).catch(err => {
+        console.error("EmailJS Error ", err);
+    });
+
+    // WHATSAPP
+    const whatsappNumber = "919935833915";
+    const whatsappText =
+        `Hello, I am ${name}%0AEmail: ${email}%0APhone: ${phone}%0A%0A${message}`;
+
+    window.open(`https://wa.me/${whatsappNumber}?text=${whatsappText}`, "_blank");
+
+    contactForm.reset();
+    alert("Message sent successfully ");
+});
+
