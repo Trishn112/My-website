@@ -13,10 +13,13 @@
         crossorigin="anonymous" />
 
     <link rel="stylesheet" href="style.css">
+
+
 </head>
 
 <body>
-     <canvas id="ai-bg"></canvas>
+    <canvas id="ai-bg"></canvas>
+
     <header>
         <nav>
             <div class="nav-name">
@@ -24,10 +27,10 @@
             </div>
             <div class="nav-links">
                 <ul>
-            <a href="resume.pptx" download class="resume-btn">
-                <i class="fa-solid fa-download"></i>
+                    <a href="Resume_AI_ML_Python_Updated.pptx" download class="resume-btn">
+                        <i class="fa-solid fa-download"></i>
                         Download Resume
-            </a>
+                    </a>
 
                     <li><a href="#home">Home</a></li>
                     <li><a href="#projects">Projects</a></li>
@@ -47,22 +50,9 @@
                     </h2>
 
 
-                    <p>
-                        I am Trishn Shukla, a motivated and detail-oriented student with a strong foundation in
-                        programming and problem-solving, and a growing interest in Artificial Intelligence and Machine
-                        Learning.
-                    </p>
+                    <p id="typing-para"></p>
 
-                    <p>
-                        Skilled in Python, data handling using NumPy and Pandas, and basic computer vision
-                        concepts. I am eager to apply my technical knowledge to real-world projects,
-                        continuously learn new technologies, and contribute effectively in a professional
-                        environment.
-                    </p>
-                </div>
-
-                <div class="home-image">
-                    <img src="Trishn.jpg" alt="Trishn Shukla">
+                    <p id="typing-para2"></p>
                 </div>
 
             </div>
@@ -132,7 +122,7 @@
 
                         <div class="project-links">
                             <a href="jarvis.html" class="btn">View Project</a>
-                            <a href="https://github.com/Trishn112" target="_blank" class="btn btn-outline">
+                            <a href="https://github.com/yourusername/jarvis-ai" target="_blank" class="btn btn-outline">
                                 GitHub
                             </a>
                         </div>
@@ -149,9 +139,48 @@
 
                         <h2 class="modal-title">Let’s Connect</h2>
                         <p class="modal-subtitle">
-                            You can reach me through any of the platforms below
+                            Send me a message or connect via social platforms
                         </p>
 
+                        <!-- CONTACT FORM -->
+                        <form id="contactForm" class="contact-form">
+
+                            <div class="form-row">
+                                <div class="input-group">
+                                    <input type="text" id="name" required>
+                                    <label for="name">Your Name</label>
+                                </div>
+
+                                <div class="input-group">
+                                    <input type="email" id="email" required>
+                                    <label for="email">Email Address</label>
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <input type="tel" id="phone" required>
+                                <label for="phone">Phone Number</label>
+                            </div>
+
+                            <div class="input-group">
+                                <textarea id="message" rows="4" required></textarea>
+                                <label for="message">Connect this form to my email 😄</label>
+                            </div>
+
+                            <button type="submit" id="sendBtn" class="btn send-btn">
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <i class="fa-solid fa-envelope"></i>
+                                Send Message
+                            </button>
+
+
+                        </form>
+
+
+                        <!-- DIVIDER -->
+                        <div class="divider">OR</div>
+
+                        <!-- social> -->
                         <div class="social-grid">
 
                             <a href="https://www.linkedin.com/in/trishn-shukla-751269272/" target="_blank"
@@ -165,19 +194,24 @@
                                 <i class="fa-brands fa-instagram"></i>
                                 <span>Instagram</span>
                             </a>
+
                         </div>
 
                     </div>
+
                 </div>
 
             </section>
 
 
     </main>
+    <script type="text/javascript"src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("x_zKjrUEPWBLe19sv");
+        })();
+    </script>
     <script src="script.js"></script>
 </body>
 
 </html>
-
-
-
