@@ -480,33 +480,47 @@
     color: var(--muted);
   }
 
-  /* CONTRIBUTIONS */
-  #contributions { padding: 7rem 0; border-top: 1px solid var(--border); }
-  .contribution-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; }
-  .contribution-card { min-width:0; padding:1.75rem; background:var(--surface); border:1px solid var(--border); box-shadow:0 20px 50px rgba(0,0,0,.18); }
-  .contribution-card-header { display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; margin-bottom:1.5rem; }
-  .contribution-kicker { display:block; color:var(--accent); font-size:.6rem; letter-spacing:.14em; margin-bottom:.45rem; }
-  .contribution-card-header h3 { font-family:'Syne',sans-serif; color:var(--text); font-size:1.25rem; font-weight:800; letter-spacing:-.03em; }
-  .contribution-profile-link { flex-shrink:0; color:var(--accent); text-decoration:none; font-size:.65rem; }
-  .contribution-profile-link:hover { opacity:.7; }
-  .heatmap-image-wrap { width:100%; min-height:115px; display:flex; align-items:center; overflow-x:auto; padding:.75rem 0; }
-  .github-heatmap img { display:block; width:100%; min-width:480px; height:auto; }
-  .contribution-note { margin-top:1rem; color:var(--muted); font-size:.68rem; line-height:1.7; }
-  .leetcode-stats { display:flex; gap:2rem; margin:0 0 1.25rem; }
-  .leetcode-stat { display:flex; flex-direction:column; gap:.15rem; }
-  .leetcode-stat-value { color:var(--accent); font-family:'Syne',sans-serif; font-size:1.55rem; font-weight:800; }
-  .leetcode-stat-label { color:var(--muted); font-size:.62rem; letter-spacing:.06em; text-transform:uppercase; }
-  .heatmap-scroll { width:100%; overflow-x:auto; padding-bottom:.4rem; }
-  .leetcode-heatmap { display:grid; grid-auto-flow:column; grid-template-rows:repeat(7,11px); grid-auto-columns:11px; gap:4px; width:max-content; min-height:101px; align-content:start; }
-  .heatmap-cell { width:11px; height:11px; border-radius:2px; background:#202631; }
-  .heatmap-cell[data-level="1"] { background:#07566a; }
-  .heatmap-cell[data-level="2"] { background:#087f99; }
-  .heatmap-cell[data-level="3"] { background:#08a9c8; }
-  .heatmap-cell[data-level="4"] { background:#00d4ff; }
-  .heatmap-legend { display:flex; align-items:center; justify-content:flex-end; gap:5px; color:var(--muted); font-size:.58rem; margin-top:.75rem; }
-  .heatmap-legend i { display:block; width:10px; height:10px; border-radius:2px; }
-  .heat-level-0 { background:#202631; } .heat-level-1 { background:#07566a; } .heat-level-2 { background:#087f99; } .heat-level-3 { background:#08a9c8; } .heat-level-4 { background:#00d4ff; }
-  .heatmap-loading { color:var(--muted); font-size:.7rem; }
+  /* CONTRIBUTIONS — GitHub-inspired activity calendar */
+  #contributions { padding: 6rem 0 7rem; border-top: 1px solid var(--border); }
+  .activity-heading { margin-bottom: 1.5rem; }
+  .activity-eyebrow { display:block; color:var(--muted); font-family:'DM Mono',monospace; font-size:.68rem; letter-spacing:.16em; margin-bottom:.45rem; }
+  .activity-heading h2 { color:var(--text); font-family:'Syne',sans-serif; font-size:clamp(1.8rem,3vw,2.5rem); font-weight:800; letter-spacing:-.045em; }
+  .activity-toolbar { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:2rem; }
+  .activity-tabs { display:inline-flex; align-items:center; gap:.25rem; padding:.35rem; border:1px solid var(--border); border-radius:9px; background:var(--surface); }
+  .activity-tab { display:inline-flex; align-items:center; gap:.55rem; padding:.55rem .9rem; border:1px solid transparent; border-radius:6px; background:transparent; color:var(--muted); font-family:'DM Mono',monospace; font-size:.72rem; cursor:pointer; transition:background .2s,color .2s,border-color .2s; }
+  .activity-tab svg { width:15px; height:15px; }
+  .activity-tab.active { background:#252a33; border-color:#3a414c; color:var(--text); }
+  .activity-tab:focus-visible,.activity-year:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+  .activity-profile-link { color:var(--muted); text-decoration:none; font-family:'DM Mono',monospace; font-size:.68rem; }
+  .activity-profile-link:hover { color:var(--accent); }
+  .activity-panel { padding:1.5rem; border:1px solid var(--border); border-radius:12px; background:var(--surface); box-shadow:0 22px 55px rgba(0,0,0,.2); }
+  .activity-panel-top { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding-bottom:1rem; border-bottom:1px solid var(--border); color:var(--muted); font-family:'DM Mono',monospace; font-size:.72rem; }
+  .activity-years { display:flex; gap:.2rem; padding:.2rem; border:1px solid var(--border); border-radius:8px; background:#090b0f; }
+  .activity-year { min-width:48px; padding:.35rem .6rem; border:0; border-radius:5px; background:transparent; color:var(--muted); font-family:'DM Mono',monospace; font-size:.68rem; cursor:pointer; }
+  .activity-year.active { background:#252a33; color:var(--text); font-weight:700; }
+  .activity-calendar { padding:1.5rem 0 1.25rem; }
+  .activity-months { display:grid; grid-auto-flow:column; grid-auto-columns:14px; gap:4px; min-height:20px; margin-left:35px; color:var(--muted); font-family:'DM Mono',monospace; font-size:.62rem; }
+  .activity-months span { white-space:nowrap; }
+  .activity-calendar-body { display:flex; gap:10px; }
+  .activity-weekdays { flex:0 0 25px; display:grid; grid-template-rows:repeat(7,14px); gap:4px; color:var(--muted); font-family:'DM Mono',monospace; font-size:.58rem; }
+  .activity-weekdays span { display:flex; align-items:center; }
+  .activity-grid-scroll { width:100%; overflow-x:auto; padding:0 0 4px; scrollbar-width:thin; scrollbar-color:#303744 transparent; }
+  .activity-grid { display:grid; grid-auto-flow:column; grid-template-rows:repeat(7,14px); grid-auto-columns:14px; gap:4px; width:max-content; min-height:122px; align-content:start; }
+  .activity-cell { width:14px; height:14px; border-radius:2px; background:#191f27; border:1px solid rgba(255,255,255,.025); transition:transform .12s,border-color .12s; }
+  .activity-cell:hover { transform:scale(1.18); border-color:rgba(255,255,255,.35); }
+  .activity-cell[data-level="1"] { background:#063b55; }
+  .activity-cell[data-level="2"] { background:#075d82; }
+  .activity-cell[data-level="3"] { background:#087fae; }
+  .activity-cell[data-level="4"] { background:#13b8ee; }
+  .activity-panel-bottom { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding-top:1rem; border-top:1px solid var(--border); color:var(--muted); font-family:'DM Mono',monospace; font-size:.65rem; }
+  .activity-legend { display:flex; align-items:center; gap:5px; white-space:nowrap; }
+  .activity-legend i { width:12px; height:12px; display:block; border-radius:2px; background:#191f27; }
+  .activity-legend i[data-level="1"] { background:#063b55; }
+  .activity-legend i[data-level="2"] { background:#075d82; }
+  .activity-legend i[data-level="3"] { background:#087fae; }
+  .activity-legend i[data-level="4"] { background:#13b8ee; }
+  .activity-status { margin-top:.75rem; color:var(--muted); font-size:.62rem; }
+  .activity-loading { grid-column:1/-1; color:var(--muted); font-family:'DM Mono',monospace; font-size:.72rem; }
   /* CONTACT */
   #contact { padding: 7rem 0; border-top: 1px solid var(--border); }
   .contact-wrapper {
@@ -641,7 +655,13 @@
     .project-card.featured { grid-column: 1; display: block; }
     .project-card.featured .project-visual { display: none; }
     .about-grid, .contact-wrapper { grid-template-columns: 1fr; }
-    .contribution-grid { grid-template-columns: 1fr; }
+    .activity-toolbar { align-items:flex-start; flex-direction:column; }
+    .activity-panel { padding:1rem; }
+    .activity-panel-bottom { align-items:flex-start; flex-direction:column; }
+    .activity-months { grid-auto-columns:12px; gap:3px; }
+    .activity-grid { grid-auto-columns:12px; grid-template-rows:repeat(7,12px); gap:3px; }
+    .activity-cell { width:12px; height:12px; }
+    .activity-weekdays { grid-template-rows:repeat(7,12px); gap:3px; }
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
     .container { padding: 0 1.5rem; }
@@ -836,44 +856,56 @@
 <!-- CONTRIBUTIONS -->
 <section id="contributions">
   <div class="container">
-    <div class="section-header reveal">
-      <span class="section-num">04</span>
-      <h2 class="section-title">Coding Contributions</h2>
-      <div class="section-line"></div>
+    <div class="activity-heading reveal">
+      <span class="activity-eyebrow">ACTIVITY</span>
+      <h2>Contributions so far</h2>
     </div>
-    <div class="contribution-grid">
-      <article class="contribution-card reveal">
-        <div class="contribution-card-header">
-          <div><span class="contribution-kicker">OPEN SOURCE</span><h3>GitHub Activity</h3></div>
-          <a href="https://github.com/Trishn112" target="_blank" rel="noopener noreferrer" class="contribution-profile-link">View Profile ↗</a>
+
+    <div class="activity-toolbar reveal">
+      <div class="activity-tabs" role="tablist" aria-label="Contribution platform">
+        <button class="activity-tab active" id="github-tab" type="button" role="tab" aria-selected="true" aria-controls="activity-panel" data-platform="github">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.55.1.76-.24.76-.53v-2.08c-3.1.67-3.76-1.32-3.76-1.32-.5-1.28-1.23-1.62-1.23-1.62-1.01-.69.08-.68.08-.68 1.12.08 1.71 1.15 1.71 1.15 1 .1.76 2.02 3.48 1.42.1-.72.39-1.22.7-1.5-2.48-.28-5.09-1.24-5.09-5.53 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.05 1.15a10.6 10.6 0 0 1 5.55 0c2.11-1.45 3.05-1.15 3.05-1.15.61 1.54.23 2.68.11 2.96.72.78 1.15 1.78 1.15 3 0 4.3-2.61 5.24-5.1 5.52.4.35.75 1.03.75 2.08V22c0 .29.2.63.76.52A11.1 11.1 0 0 0 12 .9Z"/></svg>
+          GitHub
+        </button>
+        <button class="activity-tab" id="leetcode-tab" type="button" role="tab" aria-selected="false" aria-controls="activity-panel" data-platform="leetcode">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M15.4 3.1 8.2 10.3a2.4 2.4 0 0 0 0 3.4l2.3 2.3-1.8 1.8-2.3-2.3a5 5 0 0 1 0-7.1l7.2-7.2 1.8 1.9Zm-3.1 6.2h6.2a2.5 2.5 0 0 1 0 5h-6.2v-2.6h6.2a.0.0 0 0 0 0-0.0h-6.2V9.3Zm-1.1 8.1h7.3a2.5 2.5 0 0 1 0 5h-7.3v-2.6h7.3a.0.0 0 0 0 0-0.0h-7.3v-2.4Z"/></svg>
+          LeetCode
+        </button>
+      </div>
+      <a class="activity-profile-link" id="activity-profile-link" href="https://github.com/Trishn112" target="_blank" rel="noopener noreferrer">◉ @Trishn112 ↗</a>
+    </div>
+
+    <div class="activity-panel reveal" id="activity-panel" role="tabpanel" aria-labelledby="github-tab">
+      <div class="activity-panel-top">
+        <span id="activity-caption">Public commit history</span>
+        <div class="activity-years" role="group" aria-label="Select contribution year">
+          <button type="button" class="activity-year active" data-year="2026" aria-pressed="true">2026</button>
+          <button type="button" class="activity-year" data-year="2025" aria-pressed="false">2025</button>
         </div>
-        <div class="heatmap-image-wrap github-heatmap">
-          <img src="https://ghchart.rshah.org/00d4ff/Trishn112" alt="GitHub contribution activity heatmap for Trishn112" loading="lazy">
-        </div>
-        <p class="contribution-note">Daily contributions from my public GitHub profile</p>
-      </article>
-      <article class="contribution-card reveal">
-        <div class="contribution-card-header">
-          <div><span class="contribution-kicker">PROBLEM SOLVING</span><h3>LeetCode Activity</h3></div>
-          <a href="https://leetcode.com/u/trishnshukla/" target="_blank" rel="noopener noreferrer" class="contribution-profile-link">View Profile ↗</a>
-        </div>
-        <div class="leetcode-stats">
-          <div class="leetcode-stat"><span class="leetcode-stat-value" id="leetcode-active-days">—</span><span class="leetcode-stat-label">Active days</span></div>
-          <div class="leetcode-stat"><span class="leetcode-stat-value" id="leetcode-streak">—</span><span class="leetcode-stat-label">Current streak</span></div>
-        </div>
-        <div class="heatmap-scroll">
-          <div class="leetcode-heatmap" id="leetcode-heatmap" role="img" aria-label="LeetCode daily submission activity heatmap">
-            <span class="heatmap-loading">Loading LeetCode activity…</span>
+      </div>
+
+      <div class="activity-calendar">
+        <div class="activity-months" id="activity-months" aria-hidden="true"></div>
+        <div class="activity-calendar-body">
+          <div class="activity-weekdays" aria-hidden="true">
+            <span></span><span>Mon</span><span></span><span>Wed</span><span></span><span>Fri</span><span></span>
+          </div>
+          <div class="activity-grid-scroll">
+            <div class="activity-grid" id="activity-grid" aria-label="Daily contribution activity">
+              <span class="activity-loading">Loading contribution history…</span>
+            </div>
           </div>
         </div>
-        <div class="heatmap-legend"><span>Less</span><i class="heat-level-0"></i><i class="heat-level-1"></i><i class="heat-level-2"></i><i class="heat-level-3"></i><i class="heat-level-4"></i><span>More</span></div>
-        <p class="contribution-note" id="leetcode-status" aria-live="polite">Fetching public activity data…</p>
-      </article>
+      </div>
+
+      <div class="activity-panel-bottom">
+        <span id="activity-hint">Hover over any square to see contribution details</span>
+        <div class="activity-legend"><span>Less</span><i data-level="0"></i><i data-level="1"></i><i data-level="2"></i><i data-level="3"></i><i data-level="4"></i><span>More</span></div>
+      </div>
+      <p class="activity-status" id="activity-status" aria-live="polite">Fetching public activity data…</p>
     </div>
   </div>
 </section>
-
-
 
 <!-- CONTACT -->
 <section id="contact">
@@ -985,47 +1017,138 @@
     barObserver.observe(card);
   });
 
-  // Render LeetCode's public submission calendar when its public endpoint is available.
-  async function loadLeetCodeHeatmap() {
-    const grid = document.getElementById('leetcode-heatmap');
-    const status = document.getElementById('leetcode-status');
-    const activeDays = document.getElementById('leetcode-active-days');
-    const streak = document.getElementById('leetcode-streak');
-    const query = 'query { matchedUser(username: "trishnshukla") { userCalendar { streak totalActiveDays submissionCalendar } } }';
-    try {
-      const response = await fetch('https://proxy.cors.dev/https://leetcode.com/graphql?query=' + encodeURIComponent(query));
-      if (!response.ok) throw new Error('Calendar unavailable');
-      const payload = await response.json();
-      const calendar = payload?.data?.matchedUser?.userCalendar;
-      if (!calendar) throw new Error('No public calendar data');
-      const submissions = JSON.parse(calendar.submissionCalendar || '{}');
-      const counts = {};
-      Object.entries(submissions).forEach(([timestamp,count]) => {
-        const d = new Date(Number(timestamp)*1000);
-        const key = d.getUTCFullYear()+'-'+String(d.getUTCMonth()+1).padStart(2,'0')+'-'+String(d.getUTCDate()).padStart(2,'0');
-        counts[key] = Number(count)||0;
-      });
-      activeDays.textContent = calendar.totalActiveDays ?? '—';
-      streak.textContent = calendar.streak ?? '—';
-      grid.innerHTML = '';
-      const today = new Date();
-      const end = new Date(Date.UTC(today.getUTCFullYear(),today.getUTCMonth(),today.getUTCDate()));
-      const start = new Date(end); start.setUTCDate(start.getUTCDate()-364); start.setUTCDate(start.getUTCDate()-start.getUTCDay());
-      const maxCount = Math.max(1,...Object.values(counts));
-      for(let d=new Date(start); d<=end; d.setUTCDate(d.getUTCDate()+1)) {
-        const key=d.getUTCFullYear()+'-'+String(d.getUTCMonth()+1).padStart(2,'0')+'-'+String(d.getUTCDate()).padStart(2,'0');
-        const count=counts[key]||0;
-        const level=count===0?0:Math.min(4,Math.max(1,Math.ceil(count/maxCount*4)));
-        const cell=document.createElement('span'); cell.className='heatmap-cell'; cell.dataset.level=String(level);
-        cell.title=key+': '+count+' submissions'; grid.appendChild(cell);
+  // Contribution calendar: switch between GitHub and LeetCode, and between years.
+  const activityState = { platform: 'github', year: new Date().getFullYear(), github: {}, leetcode: null };
+  const activityGrid = document.getElementById('activity-grid');
+  const activityMonths = document.getElementById('activity-months');
+  const activityStatus = document.getElementById('activity-status');
+  const activityCaption = document.getElementById('activity-caption');
+  const activityProfile = document.getElementById('activity-profile-link');
+  const activityHint = document.getElementById('activity-hint');
+
+  function activityDateKey(date) {
+    return date.getUTCFullYear()+'-'+String(date.getUTCMonth()+1).padStart(2,'0')+'-'+String(date.getUTCDate()).padStart(2,'0');
+  }
+
+  function drawActivityCalendar(counts, year) {
+    activityGrid.innerHTML = '';
+    activityMonths.innerHTML = '';
+    const first = new Date(Date.UTC(year,0,1));
+    const last = new Date(Date.UTC(year,11,31));
+    const start = new Date(first);
+    start.setUTCDate(start.getUTCDate()-((start.getUTCDay()+6)%7));
+    const dates = [];
+    for(let day=new Date(start); day<=last; day.setUTCDate(day.getUTCDate()+1)) dates.push(new Date(day));
+    const weeks = Math.ceil(dates.length/7);
+    activityMonths.style.gridTemplateColumns = 'repeat('+weeks+', 14px)';
+    let lastMonth = -1;
+    dates.forEach((date,index) => {
+      const week = Math.floor(index/7);
+      const month = date.getUTCMonth();
+      if(date.getUTCDate()===1 || (index===0 && month!==lastMonth)) {
+        const label=document.createElement('span');
+        label.style.gridColumn=String(week+1);
+        label.textContent=date.toLocaleString('en',{month:'short',timeZone:'UTC'});
+        activityMonths.appendChild(label);
       }
-      status.textContent='Daily submissions over the last 365 days · Public LeetCode profile';
+      lastMonth=month;
+    });
+    const max = Math.max(1,...Object.values(counts));
+    dates.forEach(date => {
+      const key=activityDateKey(date);
+      const count=counts[key]||0;
+      const level=count===0?0:Math.min(4,Math.max(1,Math.ceil(count/max*4)));
+      const cell=document.createElement('span');
+      cell.className='activity-cell';
+      cell.dataset.level=String(level);
+      cell.title=key+': '+count+' '+(activityState.platform==='github'?'contributions':'submissions');
+      activityGrid.appendChild(cell);
+    });
+  }
+
+  async function loadGitHubYear(year) {
+    if(activityState.github[year]) return activityState.github[year];
+    const response=await fetch('https://github-contributions-api.jogruber.de/v4/Trishn112?y='+year);
+    if(!response.ok) throw new Error('GitHub contribution service unavailable');
+    const payload=await response.json();
+    const counts={};
+    (payload.contributions||[]).forEach(item=>{ counts[item.date]=Number(item.count)||0; });
+    activityState.github[year]=counts;
+    return counts;
+  }
+
+  async function loadLeetCodeCalendar() {
+    if(activityState.leetcode) return activityState.leetcode;
+    const query='query { matchedUser(username: "trishnshukla") { userCalendar { streak totalActiveDays submissionCalendar } } }';
+    const response=await fetch('https://proxy.cors.dev/https://leetcode.com/graphql?query='+encodeURIComponent(query));
+    if(!response.ok) throw new Error('LeetCode calendar service unavailable');
+    const payload=await response.json();
+    const calendar=payload?.data?.matchedUser?.userCalendar;
+    if(!calendar) throw new Error('No public LeetCode calendar data');
+    const raw=JSON.parse(calendar.submissionCalendar||'{}');
+    const counts={};
+    Object.entries(raw).forEach(([timestamp,count])=>{
+      const date=new Date(Number(timestamp)*1000);
+      counts[activityDateKey(date)]=Number(count)||0;
+    });
+    activityState.leetcode={counts,calendar};
+    return activityState.leetcode;
+  }
+
+  async function renderActivity() {
+    const {platform,year}=activityState;
+    activityGrid.innerHTML='<span class="activity-loading">Loading contribution history…</span>';
+    activityStatus.textContent='Fetching public activity data…';
+    activityCaption.textContent=platform==='github'?'Public commit history':'Public submission history';
+    activityProfile.href=platform==='github'?'https://github.com/Trishn112':'https://leetcode.com/u/trishnshukla/';
+    activityProfile.textContent=platform==='github'?'◉ @Trishn112 ↗':'↗ @trishnshukla';
+    activityHint.textContent='Hover over any square to see contribution details';
+    try {
+      if(platform==='github') {
+        const counts=await loadGitHubYear(year);
+        drawActivityCalendar(counts,year);
+        const total=Object.values(counts).reduce((sum,value)=>sum+value,0);
+        activityStatus.textContent=total+' contributions in '+year+' · Data from public GitHub activity';
+      } else {
+        const data=await loadLeetCodeCalendar();
+        const counts=Object.fromEntries(Object.entries(data.counts).filter(([date])=>date.startsWith(String(year)+'-')));
+        drawActivityCalendar(counts,year);
+        const total=Object.values(counts).reduce((sum,value)=>sum+value,0);
+        activityStatus.textContent=total+' submissions shown for '+year+' · Public LeetCode calendar';
+      }
     } catch(error) {
-      grid.innerHTML='<span class="heatmap-loading">Live calendar temporarily unavailable. Open the LeetCode profile to view activity.</span>';
-      status.textContent='Could not load LeetCode activity right now.';
+      activityGrid.innerHTML='<span class="activity-loading">Activity data is temporarily unavailable. Use the profile link to view your contributions.</span>';
+      activityMonths.innerHTML='';
+      activityStatus.textContent='Could not load '+(platform==='github'?'GitHub':'LeetCode')+' activity right now.';
     }
   }
-  loadLeetCodeHeatmap();
+
+  document.querySelectorAll('.activity-tab').forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      activityState.platform=tab.dataset.platform;
+      document.querySelectorAll('.activity-tab').forEach(item=>{
+        const selected=item===tab;
+        item.classList.toggle('active',selected);
+        item.setAttribute('aria-selected',String(selected));
+      });
+      document.getElementById('activity-panel').setAttribute('aria-labelledby',tab.id);
+      renderActivity();
+    });
+  });
+
+  document.querySelectorAll('.activity-year').forEach(button=>{
+    button.addEventListener('click',()=>{
+      activityState.year=Number(button.dataset.year);
+      document.querySelectorAll('.activity-year').forEach(item=>{
+        const selected=item===button;
+        item.classList.toggle('active',selected);
+        item.setAttribute('aria-pressed',String(selected));
+      });
+      renderActivity();
+    });
+  });
+
+  renderActivity();
 
   // Form submit
   function handleSubmit(e) {
