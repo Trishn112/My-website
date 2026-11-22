@@ -480,6 +480,33 @@
     color: var(--muted);
   }
 
+  /* CONTRIBUTIONS */
+  #contributions { padding: 7rem 0; border-top: 1px solid var(--border); }
+  .contribution-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; }
+  .contribution-card { min-width:0; padding:1.75rem; background:var(--surface); border:1px solid var(--border); box-shadow:0 20px 50px rgba(0,0,0,.18); }
+  .contribution-card-header { display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; margin-bottom:1.5rem; }
+  .contribution-kicker { display:block; color:var(--accent); font-size:.6rem; letter-spacing:.14em; margin-bottom:.45rem; }
+  .contribution-card-header h3 { font-family:'Syne',sans-serif; color:var(--text); font-size:1.25rem; font-weight:800; letter-spacing:-.03em; }
+  .contribution-profile-link { flex-shrink:0; color:var(--accent); text-decoration:none; font-size:.65rem; }
+  .contribution-profile-link:hover { opacity:.7; }
+  .heatmap-image-wrap { width:100%; min-height:115px; display:flex; align-items:center; overflow-x:auto; padding:.75rem 0; }
+  .github-heatmap img { display:block; width:100%; min-width:480px; height:auto; }
+  .contribution-note { margin-top:1rem; color:var(--muted); font-size:.68rem; line-height:1.7; }
+  .leetcode-stats { display:flex; gap:2rem; margin:0 0 1.25rem; }
+  .leetcode-stat { display:flex; flex-direction:column; gap:.15rem; }
+  .leetcode-stat-value { color:var(--accent); font-family:'Syne',sans-serif; font-size:1.55rem; font-weight:800; }
+  .leetcode-stat-label { color:var(--muted); font-size:.62rem; letter-spacing:.06em; text-transform:uppercase; }
+  .heatmap-scroll { width:100%; overflow-x:auto; padding-bottom:.4rem; }
+  .leetcode-heatmap { display:grid; grid-auto-flow:column; grid-template-rows:repeat(7,11px); grid-auto-columns:11px; gap:4px; width:max-content; min-height:101px; align-content:start; }
+  .heatmap-cell { width:11px; height:11px; border-radius:2px; background:#202631; }
+  .heatmap-cell[data-level="1"] { background:#07566a; }
+  .heatmap-cell[data-level="2"] { background:#087f99; }
+  .heatmap-cell[data-level="3"] { background:#08a9c8; }
+  .heatmap-cell[data-level="4"] { background:#00d4ff; }
+  .heatmap-legend { display:flex; align-items:center; justify-content:flex-end; gap:5px; color:var(--muted); font-size:.58rem; margin-top:.75rem; }
+  .heatmap-legend i { display:block; width:10px; height:10px; border-radius:2px; }
+  .heat-level-0 { background:#202631; } .heat-level-1 { background:#07566a; } .heat-level-2 { background:#087f99; } .heat-level-3 { background:#08a9c8; } .heat-level-4 { background:#00d4ff; }
+  .heatmap-loading { color:var(--muted); font-size:.7rem; }
   /* CONTACT */
   #contact { padding: 7rem 0; border-top: 1px solid var(--border); }
   .contact-wrapper {
@@ -614,10 +641,15 @@
     .project-card.featured { grid-column: 1; display: block; }
     .project-card.featured .project-visual { display: none; }
     .about-grid, .contact-wrapper { grid-template-columns: 1fr; }
+    .contribution-grid { grid-template-columns: 1fr; }
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
     .container { padding: 0 1.5rem; }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  @media (max-width: 560px) {
+    .contribution-card { padding:1.25rem; }
+    .contribution-card-header { flex-direction:column; gap:.65rem; }
+  }
   }
 </style>
 </head>
@@ -635,9 +667,10 @@
 <nav>
   <a href="#" class="nav-logo">TS<span>.</span></a>
   <ul class="nav-links">
+    <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
-    <li><a href="#about">About</a></li>
+    <li><a href="#contributions">Contributions</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="Trishn_Shukla_Resume_Enhancv.docx" download class="nav-cta">Resume ↓</a>
@@ -665,11 +698,53 @@
   </div>
 </section>
 
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-num">01</span>
+      <h2 class="section-title">About</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>I'm <strong>Trishn Shukla</strong>, a B.Tech CSE (AI/ML) student passionate about programming, problem-solving, and building practical technology that solves real-world problems.</p>
+        <p>Currently strengthening my skills in <strong>Python, C++, Data Structures & Algorithms, Machine Learning, and Data Analysis</strong>. I enjoy building projects, exploring new technologies, and learning by experimenting, making mistakes, and figuring out how things work.</p>
+        <p>I'm <strong>open to opportunities</strong> — internships, hackathons, collaborations, and meaningful conversations around technology and AI. Always learning, always building. Let's create something impactful.</p>
+      </div>
+      <div class="reveal">
+        <div class="stats-grid">
+          <div class="stat-box">
+            <span class="stat-num">5+</span>
+            <span class="stat-label">Projects Built</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">80%</span>
+            <span class="stat-label">C++ Data Structure</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">70%</span>
+            <span class="stat-label">Python Proficiency</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">1</span>
+            <span class="stat-label">Live AI Project</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">∞</span>
+            <span class="stat-label">Curiosity</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SKILLS -->
 <section id="skills">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-num">01</span>
+      <span class="section-num">02</span>
       <h2 class="section-title">Skills</h2>
       <div class="section-line"></div>
     </div>
@@ -689,7 +764,7 @@
 <section id="projects">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-num">02</span>
+      <span class="section-num">03</span>
       <h2 class="section-title">Projects</h2>
       <div class="section-line"></div>
     </div>
@@ -758,47 +833,47 @@
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
+<!-- CONTRIBUTIONS -->
+<section id="contributions">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-num">03</span>
-      <h2 class="section-title">About</h2>
+      <span class="section-num">04</span>
+      <h2 class="section-title">Coding Contributions</h2>
       <div class="section-line"></div>
     </div>
-    <div class="about-grid">
-      <div class="about-text reveal">
-        <p>I'm <strong>Trishn Shukla</strong>, a B.Tech CSE (AI/ML) student passionate about programming, problem-solving, and building practical technology that solves real-world problems.</p>
-        <p>Currently strengthening my skills in <strong>Python, C++, Data Structures & Algorithms, Machine Learning, and Data Analysis</strong>. I enjoy building projects, exploring new technologies, and learning by experimenting, making mistakes, and figuring out how things work.</p>
-        <p>I'm <strong>open to opportunities</strong> — internships, hackathons, collaborations, and meaningful conversations around technology and AI. Always learning, always building. Let's create something impactful.</p>
-      </div>
-      <div class="reveal">
-        <div class="stats-grid">
-          <div class="stat-box">
-            <span class="stat-num">5+</span>
-            <span class="stat-label">Projects Built</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-num">80%</span>
-            <span class="stat-label">C++ Data Structure</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-num">70%</span>
-            <span class="stat-label">Python Proficiency</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-num">1</span>
-            <span class="stat-label">Live AI Project</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-num">∞</span>
-            <span class="stat-label">Curiosity</span>
+    <div class="contribution-grid">
+      <article class="contribution-card reveal">
+        <div class="contribution-card-header">
+          <div><span class="contribution-kicker">OPEN SOURCE</span><h3>GitHub Activity</h3></div>
+          <a href="https://github.com/Trishn112" target="_blank" rel="noopener noreferrer" class="contribution-profile-link">View Profile ↗</a>
+        </div>
+        <div class="heatmap-image-wrap github-heatmap">
+          <img src="https://ghchart.rshah.org/00d4ff/Trishn112" alt="GitHub contribution activity heatmap for Trishn112" loading="lazy">
+        </div>
+        <p class="contribution-note">Daily contributions from my public GitHub profile</p>
+      </article>
+      <article class="contribution-card reveal">
+        <div class="contribution-card-header">
+          <div><span class="contribution-kicker">PROBLEM SOLVING</span><h3>LeetCode Activity</h3></div>
+          <a href="https://leetcode.com/u/trishnshukla/" target="_blank" rel="noopener noreferrer" class="contribution-profile-link">View Profile ↗</a>
+        </div>
+        <div class="leetcode-stats">
+          <div class="leetcode-stat"><span class="leetcode-stat-value" id="leetcode-active-days">—</span><span class="leetcode-stat-label">Active days</span></div>
+          <div class="leetcode-stat"><span class="leetcode-stat-value" id="leetcode-streak">—</span><span class="leetcode-stat-label">Current streak</span></div>
+        </div>
+        <div class="heatmap-scroll">
+          <div class="leetcode-heatmap" id="leetcode-heatmap" role="img" aria-label="LeetCode daily submission activity heatmap">
+            <span class="heatmap-loading">Loading LeetCode activity…</span>
           </div>
         </div>
-      </div>
+        <div class="heatmap-legend"><span>Less</span><i class="heat-level-0"></i><i class="heat-level-1"></i><i class="heat-level-2"></i><i class="heat-level-3"></i><i class="heat-level-4"></i><span>More</span></div>
+        <p class="contribution-note" id="leetcode-status" aria-live="polite">Fetching public activity data…</p>
+      </article>
     </div>
   </div>
 </section>
+
+
 
 <!-- CONTACT -->
 <section id="contact">
@@ -909,6 +984,48 @@
     }, { threshold: 0.5 });
     barObserver.observe(card);
   });
+
+  // Render LeetCode's public submission calendar when its public endpoint is available.
+  async function loadLeetCodeHeatmap() {
+    const grid = document.getElementById('leetcode-heatmap');
+    const status = document.getElementById('leetcode-status');
+    const activeDays = document.getElementById('leetcode-active-days');
+    const streak = document.getElementById('leetcode-streak');
+    const query = 'query { matchedUser(username: "trishnshukla") { userCalendar { streak totalActiveDays submissionCalendar } } }';
+    try {
+      const response = await fetch('https://proxy.cors.dev/https://leetcode.com/graphql?query=' + encodeURIComponent(query));
+      if (!response.ok) throw new Error('Calendar unavailable');
+      const payload = await response.json();
+      const calendar = payload?.data?.matchedUser?.userCalendar;
+      if (!calendar) throw new Error('No public calendar data');
+      const submissions = JSON.parse(calendar.submissionCalendar || '{}');
+      const counts = {};
+      Object.entries(submissions).forEach(([timestamp,count]) => {
+        const d = new Date(Number(timestamp)*1000);
+        const key = d.getUTCFullYear()+'-'+String(d.getUTCMonth()+1).padStart(2,'0')+'-'+String(d.getUTCDate()).padStart(2,'0');
+        counts[key] = Number(count)||0;
+      });
+      activeDays.textContent = calendar.totalActiveDays ?? '—';
+      streak.textContent = calendar.streak ?? '—';
+      grid.innerHTML = '';
+      const today = new Date();
+      const end = new Date(Date.UTC(today.getUTCFullYear(),today.getUTCMonth(),today.getUTCDate()));
+      const start = new Date(end); start.setUTCDate(start.getUTCDate()-364); start.setUTCDate(start.getUTCDate()-start.getUTCDay());
+      const maxCount = Math.max(1,...Object.values(counts));
+      for(let d=new Date(start); d<=end; d.setUTCDate(d.getUTCDate()+1)) {
+        const key=d.getUTCFullYear()+'-'+String(d.getUTCMonth()+1).padStart(2,'0')+'-'+String(d.getUTCDate()).padStart(2,'0');
+        const count=counts[key]||0;
+        const level=count===0?0:Math.min(4,Math.max(1,Math.ceil(count/maxCount*4)));
+        const cell=document.createElement('span'); cell.className='heatmap-cell'; cell.dataset.level=String(level);
+        cell.title=key+': '+count+' submissions'; grid.appendChild(cell);
+      }
+      status.textContent='Daily submissions over the last 365 days · Public LeetCode profile';
+    } catch(error) {
+      grid.innerHTML='<span class="heatmap-loading">Live calendar temporarily unavailable. Open the LeetCode profile to view activity.</span>';
+      status.textContent='Could not load LeetCode activity right now.';
+    }
+  }
+  loadLeetCodeHeatmap();
 
   // Form submit
   function handleSubmit(e) {
